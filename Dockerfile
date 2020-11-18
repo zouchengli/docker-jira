@@ -1,11 +1,11 @@
 FROM openjdk:8-stretch
 
-LABEL maintainer="chengli.zou <chengli.zou@gmail.com>" version="8.7.1"
+LABEL maintainer="chengli.zou <chengli.zou@gmail.com>" version="8.13.1"
 
-ARG JIRA_VERSION=8.7.1
+ARG JIRA_VERSION=8.13.1
 # Production: jira-software jira-core
 ARG JIRA_PRODUCT=jira-software
-ARG AGENT_VERSION=1.2.2
+ARG AGENT_VERSION=1.2.3
 ARG MYSQL_DRIVER_VERSION=5.1.48
 
 ENV JIRA_USER=jira \
