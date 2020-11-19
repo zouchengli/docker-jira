@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   jira:
-    image: zouchengli/jira
+    image: zouchengli/jira:crack
     container_name: jira-srv
     environment:
       - TZ='Asia/Shanghai'

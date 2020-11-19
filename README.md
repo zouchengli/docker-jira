@@ -24,3 +24,32 @@ default port: 8080
 ```
     docker run -p 8080:8080 -v jira_home_data:/var/jira --name jira-srv -e TZ='Asia/Shanghai' zouchengli/jira
 ```
+
+## How to hack jira
+
+```
+docker exec jira-srv java -jar /var/agent/atlassian-agent.jar \
+    -p jira \
+    -m chengli.zou@gmail.com \
+    -n chengli.zou@gmail.com \
+    -o http://localhost:8080 \
+    -s copy-you-server-id
+```
+
+## How to hack jira plugin
+
+- .eg I want to use BigGantt plugin
+1. Install BigGantt from jira marketplace.
+2. Find `App Key` of BigGantt is : `eu.softwareplant.biggantt`
+3. Execute :
+
+```
+docker exec jira-srv java -jar /var/agent/atlassian-agent.jar \
+    -p eu.softwareplant.biggantt \
+    -m chengli.zou@gmail.com \
+    -n chengli.zou@gmail.com \
+    -o http://localhost:8080 \
+    -s copy-you-server-id
+```
+
+4. Paste your license 
