@@ -3,9 +3,7 @@ FROM openjdk:8-stretch
 LABEL maintainer="chengli.zou <chengli.zou@gmail.com>" version="8.13.1"
 
 ARG JIRA_VERSION=8.13.1
-# Production: jira-software jira-core
 ARG JIRA_PRODUCT=jira-software
-ARG AGENT_VERSION=1.2.3
 ARG MYSQL_DRIVER_VERSION=5.1.48
 
 ENV JIRA_USER=jira \
@@ -15,13 +13,8 @@ ENV JIRA_USER=jira \
     JVM_MINIMUM_MEMORY=1g \
     JVM_MAXIMUM_MEMORY=3g \
     JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize=1g -XX:ReservedCodeCacheSize=2g' \
-    AGENT_PATH=/var/agent \
-    AGENT_FILENAME=atlassian-agent.jar
 
-ENV JAVA_OPTS="-javaagent:${AGENT_PATH}/${AGENT_FILENAME} ${JAVA_OPTS}"
-
-RUN mkdir -p ${JIRA_INSTALL} ${JIRA_HOME} ${AGENT_PATH} \
-&& curl -o ${AGENT_PATH}/${AGENT_FILENAME}  https://github.com/zouchengli/docker-jira/releases/download/v${AGENT_VERSION}/atlassian-agent.jar -L \
+RUN mkdir -p ${JIRA_INSTALL} ${JIRA_HOME} \
 && curl -o /tmp/atlassian.tar.gz https://product-downloads.atlassian.com/software/jira/downloads/atlassian-${JIRA_PRODUCT}-${JIRA_VERSION}.tar.gz -L \
 && tar xzf /tmp/atlassian.tar.gz -C ${JIRA_INSTALL}/ --strip-components 1 \
 && rm -f /tmp/atlassian.tar.gz \
