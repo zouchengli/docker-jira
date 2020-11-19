@@ -22,7 +22,7 @@ default port: 8080
 - start jira
 
 ```
-    docker run -p 8080:8080 -v jira_home_data:/var/jira --name jira-srv -e TZ='Asia/Shanghai' zouchengli/jira
+    docker run -p 8080:8080 -v jira_home_data:/var/jira --name jira-srv -e TZ='Asia/Shanghai' zouchengli/jira:crack
 ```
 
 ## How to hack jira
