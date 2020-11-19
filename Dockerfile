@@ -12,7 +12,7 @@ ENV JIRA_USER=jira \
     JIRA_INSTALL=/opt/jira \
     JVM_MINIMUM_MEMORY=1g \
     JVM_MAXIMUM_MEMORY=3g \
-    JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize=1g -XX:ReservedCodeCacheSize=2g' \
+    JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize=1g -XX:ReservedCodeCacheSize=2g'
 
 RUN mkdir -p ${JIRA_INSTALL} ${JIRA_HOME} \
 && curl -o /tmp/atlassian.tar.gz https://product-downloads.atlassian.com/software/jira/downloads/atlassian-${JIRA_PRODUCT}-${JIRA_VERSION}.tar.gz -L \
